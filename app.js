@@ -35,6 +35,16 @@ app.get("/bug", (req, res) => {
   throw new Error("Bug simulado em produção!");
 });
 
+app.get("/piada", async (req, res) => {
+  try {
+    const resposta = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
+    const dados = await resposta.json();
+    res.json({ nome: dados.name, altura: dados.height, peso: dados.weight });
+  } catch (erro) {
+    res.status(500).json({ erro: "Falha ao consultar a API" });
+  }
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
