@@ -27,6 +27,10 @@ app.get("/pokemons", (req, res) => {
   ]);
 });
 
+app.post("/series", (req, res) => {
+  res.json(["Breaking Bad", "Dark", "Stranger Things"]);
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
